@@ -48,38 +48,7 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 6. Run the program.
 
 ### **PROGRAM**
-// JK flip-flop, synchronous active-low reset
-module JK_FF(
-    input  wire j,
-    input  wire k,
-    input  wire clock,
-    input  wire reset_n, // active-low synchronous reset (0 = reset)
-    output reg  q,
-    output wire qb
-);
-
-assign qb = ~q;
-
-always @(posedge clock) begin
-    if (!reset_n) begin
-        // synchronous reset: put Q to 0 (and QB = 1 via assign)
-        q <= 1'b0;
-    end else begin
-        // JK behavior
-        if (j == 1'b0 && k == 1'b0) begin
-            // hold: q <= q; (no change)
-            q <= q;
-        end else if (j != k) begin
-            // set or reset depending on J (if J=1,K=0 => set; J=0,K=1 => reset)
-            q <= j;
-        end else /* j==1 && k==1 */ begin
-            // toggle
-            q <= ~q;
-        end
-    end
-end
-
-endmodule
+![WhatsApp Image 2025-11-21 at 12 20 33_60559e0c](https://github.com/user-attachments/assets/099e5d15-c7ff-4d8e-a104-012ec5aae924)
 
 
 
